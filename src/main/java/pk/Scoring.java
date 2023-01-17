@@ -11,18 +11,16 @@ public class Scoring {
         }
     }
 
-    public boolean threeSkulls(Faces [] alldice){
-            int skulls = 0;
+    public boolean threeSkulls(Faces [] alldice, Player player){
             for(int i = 0; i < alldice.length; i++) {
                 if (alldice[i].equals(Faces.SKULL)) {
-                    skulls += 1;
+                    //skulls += 1;
+                    player.increment_skulls();
                 }
             }
-
-            if(skulls == 3){
+            if(player.getSkulls_received() == 3){
                 return true;
             }
-
             return false;
     }
 
