@@ -46,7 +46,7 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 | :-: |:-:  |---                                                 | :-:      | :-:       | :-:       |
 | YES | F01 | Roll a dice                                        |  D       |  16/01/23 | 16/01/23  |
 | YES | F02 | Roll eight dices                                   |  D       |  16/01/23 | 16/01/23  |
-| YES | F03 | Receive 100 score per gold or diamond              |  P       |           |           |
+| YES | F03 | Receive 100 score per gold or diamond              |  D       |  16/01/23 | 16/01/23  |
 | YES | F04 | Player pick # of dice to reroll or to end turn     |  B (F02) |           |           |
 | YES | F05 | Show total score (Win once player reaches 6000)    |  P       |           |           |
 | YES | F06 | Play 42 games and calculate percentage win of each |  B       |           |           |
