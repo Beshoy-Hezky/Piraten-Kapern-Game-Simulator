@@ -5,8 +5,21 @@ import java.util.Arrays;
 public class Player {
     private int score;
 
+    private int wins;
+
+    Scoring manager = new Scoring();
+    Strategy strategy = new Strategy();
+
 
     public Dice[] array_of_dice = {new Dice(),new Dice(),new Dice(),new Dice(),new Dice(),new Dice(),new Dice(),new Dice()};
+
+    public int getWins(){
+        return this.wins;
+    }
+
+    public void incrementWins(){
+        this.wins += 1;
+    }
 
 
     public Faces[] array_of_faces = new Faces[8];
@@ -28,7 +41,7 @@ public class Player {
 
     public int skulls_received(){
         int skullies = 0;
-        for(int i = 0; i < array_of_dice.length; i++){
+        for(int i = 0; i < this.array_of_dice.length; i++){
             if(this.array_of_faces[i].equals(Faces.SKULL)){
                 skullies += 1;
             }
@@ -76,11 +89,9 @@ public class Player {
             manager.handleScore(array_of_faces,this);
         }
         System.out.println(this.getScore());
-    }
+    }               //One turn for testing stuff
 
     public void shorter_turn_initial_strat() {
-        Scoring manager = new Scoring();
-        Strategy strategy = new Strategy();
         this.rollALL();
         while (!(manager.threeSkulls(this))) {
             if (strategy.intialStrategyReroll()) {
@@ -93,5 +104,5 @@ public class Player {
         if(!(manager.threeSkulls(this))){
             manager.handleScore(array_of_faces,this);
         }
-    }
+    }          //One turn without testing
 }

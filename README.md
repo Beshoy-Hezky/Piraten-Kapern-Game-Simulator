@@ -25,20 +25,7 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
  * Definition of Done (DoD):
    * < when all conditions a feature are satisfied and ready for the user to be used>
 
-### Backlog 
 
-| MVP? | Id  | Feature          | Status  |  Started  | Delivered |
-| :-:  |:-:  |---               | :-:     | :-:       | :-:       |
-| x   | F01 | Roll a dice       |  S      | 01/01/23  |           |
-| x   | F02 | Roll eight dices  |  B (F01)|           |           |
-| x   | F03 | Make two players  |  B (F01)|           |           |
-| x   | F04 | Roll eight dices  |  B (F01) |   |
-| x   | F05 | Roll eight dices  |  B (F01) |   |
-| NO  | F06 | Select how many games as command-line arg.  |  P  |   |
-| NO  | F07 | end of game with three cranes | P | |
-| YES  | F08 | Player keeping random dice at their turn | B (F02) | | 
-| NO  | F09 | Score points: 3-of-a-kind | B (F04) | | 
-| ... | ... | ... |
 
 ### Fixed Backlog 
 
@@ -49,7 +36,7 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 | YES  | F03 | Receive 100 score per gold or diamond                         |  D       |  16/01/23 | 16/01/23  |
 | YES  | F04 | Reroll feature                                                |  D       |  17/01/23 | 17/01/23  |
 | YES  | F05 | Player pick # of dice to reroll or to end turn(strategy)      |  D       |  17/01/23 | 17/01/23  |
-| YES  | F06 | Show total score (Win once player reaches 6000)               |  S       |  18/01/23 |           |
-| YES  | F07 | Play 42 games and calculate percentage win of each            |  B       |           |           |
+| YES  | F06 | Show total score (Win once player reaches 6000)               |  D       |  18/01/23 | 18/01/23  |
+| YES  | F07 | Play 42 games and calculate percentage win of each            |  D       |  18/01/23 | 18/01/23  |
 
 

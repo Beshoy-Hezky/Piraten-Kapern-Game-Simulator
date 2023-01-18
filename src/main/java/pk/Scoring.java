@@ -12,7 +12,7 @@ public class Scoring {
     }
 
     public boolean threeSkulls(Player player){
-            if(player.skulls_received() == 3){
+            if(player.skulls_received() >= 3){
                 return true;
             }
             return false;

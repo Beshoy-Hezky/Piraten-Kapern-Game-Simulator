@@ -15,7 +15,7 @@ public class Strategy {
         int lowerBound = 2;
         int upperBound = 8 - player.skulls_received();
         Random random = new Random();
-        int randomNumber = random.nextInt(upperBound - lowerBound) + lowerBound + 1;
+        int randomNumber = random.nextInt(upperBound - lowerBound) + lowerBound + 1 ;
         return randomNumber;
     }
 }

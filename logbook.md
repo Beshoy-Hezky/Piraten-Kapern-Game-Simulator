@@ -16,3 +16,4 @@
 18-01-2023
 1. Simulate a whole game
 2. Same thing 42 games then calculate an average.
+3. Finished up the MVP today with 42 Simulations and the given strategy
