@@ -14,7 +14,6 @@ public class Scoring {
     public boolean threeSkulls(Faces [] alldice, Player player){
             for(int i = 0; i < alldice.length; i++) {
                 if (alldice[i].equals(Faces.SKULL)) {
-                    //skulls += 1;
                     player.increment_skulls();
                 }
             }
