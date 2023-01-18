@@ -10,7 +10,7 @@ public class PiratenKarpen {
         System.out.println("I'm rolling a dice");
         Dice myDice = new Dice();
         Player first_player = new Player();
-        first_player.play();
+        first_player.turn_initial_strat();
         //System.out.println(myDice.roll());
         System.out.println("That's all folks!");
     }
