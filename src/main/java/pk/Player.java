@@ -3,6 +3,13 @@ package pk;
 import java.util.Arrays;
 
 public class Player {
+
+    public Dice[] array_of_dice = {new Dice(),new Dice(),new Dice(),new Dice(),new Dice(),new Dice(),new Dice(),new Dice()};
+    public Faces[] array_of_faces = new Faces[8];
+
+    //TEST HERE
+    // Faces[] array_of_faces = {Faces.SKULL, Faces.SKULL, Faces.SKULL, Faces.GOLD, Faces.DIAMOND,Faces.MONKEY, Faces.DIAMOND,Faces.MONKEY};
+
     private int score;
 
     private int wins;
@@ -10,9 +17,7 @@ public class Player {
     Scoring manager = new Scoring();
     Strategy strategy = new Strategy();
 
-
-    public Dice[] array_of_dice = {new Dice(),new Dice(),new Dice(),new Dice(),new Dice(),new Dice(),new Dice(),new Dice()};
-
+    Dice dice = new Dice();
     public int getWins(){
         return this.wins;
     }
@@ -22,16 +27,11 @@ public class Player {
     }
 
 
-    public Faces[] array_of_faces = new Faces[8];
-
-    //TEST HERE
-   // Faces[] array_of_faces = {Faces.SKULL, Faces.SKULL, Faces.SKULL, Faces.GOLD, Faces.DIAMOND,Faces.MONKEY, Faces.DIAMOND,Faces.MONKEY};
-
-    public void setScore(int score) {
-        this.score = score;
+    public void resetScore() {
+        this.score = 0;
     }
 
-    public void addScore(int addition){
+    protected void addScore(int addition){
         score += addition;
     }
 
@@ -39,7 +39,7 @@ public class Player {
         return this.score;
     }
 
-    public int skulls_received(){
+    protected int skulls_received(){
         int skullies = 0;
         for(int i = 0; i < this.array_of_dice.length; i++){
             if(this.array_of_faces[i].equals(Faces.SKULL)){
@@ -49,27 +49,10 @@ public class Player {
         return skullies;
     }
 
-    public void rollALL(){
-        for(int i = 0; i < 8; i++){
-            array_of_faces[i] =  this.array_of_dice[i].roll();
-        }
-    }
-    public void reRollSome(int again){
-       // System.out.println("The boolean came back as " + approved + " the random number came back as "+ again);
-        if(again <= 8-this.skulls_received()) {        //to reroll number of rerolls has to consider skulls
-            for (int i = 0; i < 8; i++) {
-                if ( (again > 0) && !(this.array_of_faces[i].equals(Faces.SKULL))) {    // if (again>0) and (not a skull)
-                    array_of_faces[i] = this.array_of_dice[i].roll();
-                    again -= 1;                                                     //decrement with each iteration
-                }
-            }
-        }
-    }
-
     public void turn_initial_strat() {
         Scoring manager = new Scoring();
         Strategy strategy = new Strategy();
-        this.rollALL();
+        dice.rollALL(this);
         System.out.println(Arrays.toString(this.array_of_faces));
         while (!(manager.threeSkulls(this))) {
             System.out.println("Passed the while loop");
@@ -77,7 +60,7 @@ public class Player {
             System.out.println(x);
             if (x) {
                 System.out.println("Passed the if loop");
-                this.reRollSome(strategy.intialStrategyNumber(this));
+                dice.reRollSome(strategy.intialStrategyNumber(this),this);
                 System.out.println(Arrays.toString(this.array_of_faces));
             }
             else{
@@ -86,23 +69,23 @@ public class Player {
 
         }
         if(!(manager.threeSkulls(this))){
-            manager.handleScore(array_of_faces,this);
+            manager.handleScore(this.array_of_faces,this);
         }
         System.out.println(this.getScore());
     }               //One turn for testing stuff
 
-    public void shorter_turn_initial_strat() {
-        this.rollALL();
-        while (!(manager.threeSkulls(this))) {
-            if (strategy.intialStrategyReroll()) {
-                this.reRollSome(strategy.intialStrategyNumber(this));
+    public void shorter_turn_initial_strat() {                                // this is the method for running one turn
+        dice.rollALL(this);                                                       // turn starts by rolling all 8 dice
+        while (!(manager.threeSkulls(this))) {                          // keep on playing while skulls received method returns false    (this method checks for 3 skulls and returns true if 3 skulls are found)
+            if (strategy.intialStrategyReroll()) {                            // initial strategy to reroll or not to reroll
+                dice.reRollSome(strategy.intialStrategyNumber(this),this);   // if reroll is allowed how many dice should I reroll
             }
-            else{
+            else{                                                             // if no reroll then break and end turn
                 break;
             }
         }
-        if(!(manager.threeSkulls(this))){
-            manager.handleScore(array_of_faces,this);
+        if(!(manager.threeSkulls(this))){                              // if less than three skulls
+            manager.handleScore(this.array_of_faces,this);                  // Add points of (gold and diamond) to score
         }
-    }          //One turn without testing
+    }
 }

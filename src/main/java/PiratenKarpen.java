@@ -7,7 +7,9 @@ public class PiratenKarpen {
     private static final Logger logger = LogManager.getLogger(PiratenKarpen.class);
 
     public static void main(String[] args) {
-        System.out.println("Welcome to Piraten Karpen Simulator!");
+        /*System.out.println("Welcome to Piraten Karpen Simulator!");
+        Player first_player = new Player();
+        first_player.turn_initial_strat();*/
         Player first_player = new Player();
         Player second_player = new Player();
 
@@ -42,14 +44,14 @@ public class PiratenKarpen {
         if(player1.getScore() > player2.getScore()){            // if player 1 > player 2
             player1.incrementWins();
         }
-        else if (player2.getScore() > player1.getScore()){          // if player 2 > player 1
+        else if (player2.getScore() > player1.getScore()){          // if player 2 > player 1          // tie is possible (some games end as ties thats why the % doesn't always add up to 100%)
             player2.incrementWins();
-        }                                                           // tie is possible
-        player1.setScore(0);
-        player2.setScore(0);
+        }
+        player1.resetScore();
+        player2.resetScore();
     }
 
-    public static void debugMode(Player player1, Player player2){
+    public static void debugMode(Player player1, Player player2){         //same as playgame function but with debuggers
         while(player1.getScore() < 6000 && player2.getScore() < 6000){
             player1.shorter_turn_initial_strat();
             player2.shorter_turn_initial_strat();
@@ -77,11 +79,11 @@ public class PiratenKarpen {
             logger.info("Player 1 won this game");
             player2.incrementWins();
         }
-        else{                                                       // if a tie   // some games end as ties thats why the % doesn't always add up to 100%
+        else{                                                       // if a tie
             logger.info("ITS A TIEEE");
         }
-        player1.setScore(0); // change to reset score for more security
-        player2.setScore(0);
+        player1.resetScore();
+        player2.resetScore();
         logger.info("Player one wins = {}" , player1.getWins());
         logger.info("Player two wins = {}" , player2.getWins());
 
