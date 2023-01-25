@@ -18,6 +18,29 @@ public class Strategy {
         return randomNumber;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     protected boolean comboStrategyReroll(Player player){                // Combo strategy to reroll or not to reroll
         int percentage = 60;                                            // 60% chance of reroll if no combos exists
         int x = random.nextInt(100)+1;
@@ -51,6 +74,13 @@ public class Strategy {
         else {
             return false;
         }
+    }
+
+    protected int comboStrategyNumber(Player player){              //picking the number of dice to reroll for combo strategy
+        int lowerBound = 2;
+        int upperBound = 8 - player.skulls_received() - player.tracking.get(Faces.GOLD) - player.tracking.get(Faces.DIAMOND) - player.getMax_value();
+        int randomNumber = random.nextInt(upperBound - lowerBound) + lowerBound + 1 ;   // random number between 2 and 8 - golds, diamonds, and most reoccuring face
+        return randomNumber;
     }
 
 
