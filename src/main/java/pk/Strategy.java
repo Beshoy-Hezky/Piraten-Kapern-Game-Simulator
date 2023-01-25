@@ -61,12 +61,13 @@ public class Strategy {
         }
         else{
             upperBound = 8 - player.skulls_received() - player.tracking.get(Faces.GOLD) - player.tracking.get(Faces.DIAMOND);       // if most recurring face is gold or diamond (so that I do not subtract twice)
-            System.out.println("the top bottom ran and the upper bound is: " + upperBound);
+            System.out.println("the bottom ran and the upper bound is: " + upperBound);
         }
         int x = upperBound - lowerBound;
         if(x<1){              // random number has to be between positive
             x = 1;
         }
+
         int randomNumber = random.nextInt(x) + lowerBound + 1 ;   // random number between 2 and 8 - golds, diamonds, and most reoccuring face
         return randomNumber;
     }

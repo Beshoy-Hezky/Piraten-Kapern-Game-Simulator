@@ -30,7 +30,6 @@ public class Dice {
     }
     protected void rerollSomeSmart(int again, Player player){               // rerolling the dice while keeping the golds and diamonds
         System.out.println(" the random number came back as "+ again);
-       // if(again <= 8- player.skulls_received() - player.tracking.get(Faces.GOLD) - player.tracking.get(Faces.DIAMOND) - player.getMax_value()){                   // checking number of dice that need to be rerolled so that function works
             for (int i = 0; i < 8; i++){
                 if ( (again > 0) && !(player.array_of_faces[i].equals(Faces.SKULL)) && !(player.array_of_faces[i].equals(Faces.GOLD))
                         && !(player.array_of_faces[i].equals(Faces.DIAMOND)) && !(player.array_of_faces[i].equals(player.getMax_face()))) {    // if (again>0) and (not a skull) and (not a gold) and (not a diamond)and (not the most recurring face)
@@ -38,35 +37,17 @@ public class Dice {
                     again -= 1;                                                     //decrement with each iteration
                 }
             }
-        //}
-
     }
 
     protected void tracker(Player player){                                     // function to track faces
+        player.tracking.clear();
         player.tracking.put(Faces.GOLD, 0);                                   //initializing all to zero because I want this function to not save previous results
         player.tracking.put(Faces.MONKEY, 0);
         player.tracking.put(Faces.DIAMOND, 0);
         player.tracking.put(Faces.SABER, 0);
         player.tracking.put(Faces.PARROT, 0);
         for ( Faces x : player.array_of_faces){                                // just increment to the faces
-            switch(x){
-                case GOLD:
-                    player.tracking.compute(Faces.GOLD, (key, val) -> (val == null) ? 1 : val + 1);
-                    break;
-                case DIAMOND:
-                    player.tracking.compute(Faces.DIAMOND, (key, val) -> (val == null) ? 1 : val + 1);
-                    break;
-                case MONKEY:
-                    player.tracking.compute(Faces.MONKEY, (key, val) -> (val == null) ? 1 : val + 1);
-                    break;
-                case SABER:
-                    player.tracking.compute(Faces.SABER, (key, val) -> (val == null) ? 1 : val + 1);
-                    break;
-                case PARROT:
-                    player.tracking.compute(Faces.PARROT, (key, val) -> (val == null) ? 1 : val + 1);
-                    break;
-            }
-
+            player.tracking.compute(x, (key, val) -> (val==null) ? 1 : val+1);
         } player.finding_max_value();    // update the value that stores the most recurring face
     }
 
