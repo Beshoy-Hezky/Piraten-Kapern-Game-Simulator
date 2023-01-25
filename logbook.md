@@ -23,3 +23,10 @@
 2. Will work on fixing access specifiers
 3. Fixed access specifiers and added comments to make code more understandable
 4. Moved some functions to Dice class to not have the person class be massive
+
+23-01-2023
+1. Work on implementing scoring strategy
+2. Work on adding combo scoring
+
+24-01-2023
+1. Work on implementing new combo scoring and strategy.

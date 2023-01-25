@@ -7,10 +7,10 @@ public class PiratenKarpen {
     private static final Logger logger = LogManager.getLogger(PiratenKarpen.class);
 
     public static void main(String[] args) {
-        /*System.out.println("Welcome to Piraten Karpen Simulator!");
+        System.out.println("Welcome to Piraten Karpen Simulator!");
         Player first_player = new Player();
-        first_player.turn_initial_strat();*/
-        Player first_player = new Player();
+        first_player.turn_initial_strat();
+        /*Player first_player = new Player();
         Player second_player = new Player();
 
         if(System.getProperties().containsKey("TRACE")){                                     // check if you want to run it in trace mode
@@ -27,7 +27,7 @@ public class PiratenKarpen {
         float playerB_wins = (float)(second_player.getWins()/42.0)*100;
         System.out.println();
         System.out.printf("Player 1 wins: %.2f%% \n", playerA_wins);         // display percentage wins
-        System.out.printf("Player 2 wins: %.2f%% \n", playerB_wins);
+        System.out.printf("Player 2 wins: %.2f%% \n", playerB_wins);*/
         System.out.println("--------------END--------------");
     }
 

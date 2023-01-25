@@ -35,4 +35,9 @@ public class Dice {
         }
     }
 
+    /*protected void rerollSomeSmart(int again, Player player){
+        System.out.println(" the random number came back as "+ again);
+        if(again <= 8- player.skulls_received())
+    }*/
+
 }

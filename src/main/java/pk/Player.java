@@ -1,18 +1,23 @@
 package pk;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class Player {
 
-    public Dice[] array_of_dice = {new Dice(),new Dice(),new Dice(),new Dice(),new Dice(),new Dice(),new Dice(),new Dice()};
-    public Faces[] array_of_faces = new Faces[8];
+    protected Dice[] array_of_dice = {new Dice(),new Dice(),new Dice(),new Dice(),new Dice(),new Dice(),new Dice(),new Dice()};
+   // public Faces[] array_of_faces = new Faces[8];
 
     //TEST HERE
-    // Faces[] array_of_faces = {Faces.SKULL, Faces.SKULL, Faces.SKULL, Faces.GOLD, Faces.DIAMOND,Faces.MONKEY, Faces.DIAMOND,Faces.MONKEY};
+     public Faces[] array_of_faces = {Faces.SKULL, Faces.SKULL, Faces.SKULL, Faces.PARROT, Faces.DIAMOND,Faces.DIAMOND, Faces.DIAMOND,Faces.DIAMOND};
 
     private int score;
 
     private int wins;
+
+    protected HashMap<Faces, Integer> tracking = new HashMap<>();
+
+
 
     Scoring manager = new Scoring();
     Strategy strategy = new Strategy();
@@ -49,14 +54,42 @@ public class Player {
         return skullies;
     }
 
+    public void tracker(){
+        tracking.put(Faces.GOLD, 0);
+        tracking.put(Faces.MONKEY, 0);
+        tracking.put(Faces.DIAMOND, 0);
+        tracking.put(Faces.SABER, 0);
+        tracking.put(Faces.PARROT, 0);
+        for ( Faces x : array_of_faces){                                        // just increment to the faces
+            switch(x){
+                case GOLD:
+                    tracking.compute(Faces.GOLD, (key, val) -> (val == null) ? 1 : val + 1);
+                    break;
+                case DIAMOND:
+                    tracking.compute(Faces.DIAMOND, (key, val) -> (val == null) ? 1 : val + 1);
+                    break;
+                case MONKEY:
+                    tracking.compute(Faces.MONKEY, (key, val) -> (val == null) ? 1 : val + 1);
+                    break;
+                case SABER:
+                    tracking.compute(Faces.SABER, (key, val) -> (val == null) ? 1 : val + 1);
+                    break;
+                case PARROT:
+                    tracking.compute(Faces.PARROT, (key, val) -> (val == null) ? 1 : val + 1);
+                    break;
+            }
+
+        }
+    }
+
     public void turn_initial_strat() {
-        Scoring manager = new Scoring();
-        Strategy strategy = new Strategy();
-        dice.rollALL(this);
+       // Scoring manager = new Scoring();
+      //  Strategy strategy = new Strategy();
+       // dice.rollALL(this);
         System.out.println(Arrays.toString(this.array_of_faces));
         while (!(manager.threeSkulls(this))) {
             System.out.println("Passed the while loop");
-            boolean x = strategy.intialStrategyReroll();
+            boolean x = false;              // change this to liking
             System.out.println(x);
             if (x) {
                 System.out.println("Passed the if loop");
@@ -68,11 +101,15 @@ public class Player {
             }
 
         }
+        this.tracker();                                                     //remove later
+        System.out.println("The hash map came out as: " + tracking);
         if(!(manager.threeSkulls(this))){
-            manager.handleScore(this.array_of_faces,this);
+            manager.handleGold(this);
+            manager.handleCombos(this);
         }
         System.out.println(this.getScore());
-    }               //One turn for testing stuff
+
+    }
 
     public void shorter_turn_initial_strat() {                                // this is the method for running one turn
         dice.rollALL(this);                                                       // turn starts by rolling all 8 dice
@@ -85,7 +122,9 @@ public class Player {
             }
         }
         if(!(manager.threeSkulls(this))){                              // if less than three skulls
-            manager.handleScore(this.array_of_faces,this);                  // Add points of (gold and diamond) to score
+            manager.handleGold(this);                  // Add points of (gold and diamond) to score
+            manager.handleCombos(this);
         }
+
     }
 }

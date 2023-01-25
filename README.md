@@ -41,7 +41,7 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 | YES  | F06 | Show total score (Win once player reaches 6000)               |  D       |  18/01/23 | 18/01/23  |
 | YES  | F07 | Play 42 games and calculate percentage win of each            |  D       |  18/01/23 | 18/01/23  |
 | NO   | F08 | Add logging user can see wins and rolls                       |  D       |  21/01/23 | 21/01/23  |
-| NO   | F09 | Replace set score with reset score fix up access specifiers   |  D       |  21/01/23 | 22/01/23  |
+| NO   | F09 | Add group scoring in the game                                 |  D       |  24/01/23 | 24/01/23  |
 | NO   | F10 | ...                                                           |  B       |  x        | x         |
 | NO   | F11 | ...                                                           |  B       |  x        | x         |
 
