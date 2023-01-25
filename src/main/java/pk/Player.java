@@ -2,6 +2,7 @@ package pk;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class Player {
 
@@ -18,6 +19,35 @@ public class Player {
     private int wins;
 
     protected HashMap<Faces, Integer> tracking = new HashMap<>();
+
+    private int max_value;         // this value stores the most recurring face in the dice
+
+    private Faces max_face;       // this holds the most reoccurring face
+    protected void finding_max_value(){
+        for(Integer i : this.tracking.values()){      // using a for each loop to iterate through the hashmap values
+            if(i > max_value){                          // finding the max
+                max_value = i;
+            }
+        }
+        for(Entry<Faces, Integer> entry: tracking.entrySet()) {
+
+            // if given value is equal to value from entry
+            // update the max key
+            if(entry.getValue() == max_value) {
+                max_face = entry.getKey();
+                break;
+            }
+        }
+
+    }
+
+    protected int getMax_value(){
+        return max_value;
+    }
+
+    protected Faces getMax_face(){
+        return max_face;
+    }
 
     Scoring score_manager = new Scoring();
     Strategy strategy = new Strategy();
@@ -63,12 +93,12 @@ public class Player {
         System.out.println(Arrays.toString(this.array_of_faces));
         while (!(score_manager.threeSkulls(this))) {
             System.out.println("Passed the while loop");
+            dice.tracker(this);
             boolean x = false;                              // change this to liking
             System.out.println(x);
             if (x) {
-                dice.tracker(this);
                 System.out.println("Passed the if loop");
-                dice.reRollSome(strategy.intialStrategyNumber(this),this);
+                dice.reRollSome(strategy.initialStrategyNumber(this),this);
                 System.out.println(Arrays.toString(this.array_of_faces));
             }
             else{
@@ -89,18 +119,18 @@ public class Player {
     public void shorter_turn_initial_strat() {                             // this is the method for running one turn
         dice.rollALL(this);                                          // turn starts by rolling all 8 dice
         while (!(score_manager.threeSkulls(this))) {                 // keep on playing while skulls received method returns false    (this method checks for 3 skulls and returns true if 3 skulls are found)
-            if (strategy.intialStrategyReroll()) {                         // initial strategy to reroll or not to reroll
-                dice.tracker(this);
-                dice.reRollSome(strategy.intialStrategyNumber(this),this);   // if reroll is allowed how many dice should I reroll
+            dice.tracker(this);                                        //dice.tracker gets the configuration of the dice so it tells the computer in a hashmap if I have 2 gold 3 monkey etc...
+            if (strategy.initialStrategyReroll()) {                         // initial strategy to reroll or not to reroll
+                dice.reRollSome(strategy.initialStrategyNumber(this),this);   // if reroll is allowed how many dice should I reroll
             }
             else{                                                          // if no reroll then break and end turn
                 break;
             }
         }
-        dice.tracker(this);                                          //dice.tracker gets the configuration of the dice so it tells the computer in a hashmap if I have 2 gold 3 monkey etc...
+        dice.tracker(this);
         if(!(score_manager.threeSkulls(this))){                      // if less than three skulls
             score_manager.handleGold(this);                          // Add points of (gold and diamond) to score
-            score_manager.handleCombos(this);
+            score_manager.handleCombos(this);                        // Add points of combos
         }
 
     }
