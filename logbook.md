@@ -30,3 +30,4 @@
 
 24-01-2023
 1. Work on implementing new combo scoring and strategy.
+2. Add smart which chooses not to reroll the gold and the diamond

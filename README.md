@@ -42,8 +42,10 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 | YES  | F07 | Play 42 games and calculate percentage win of each            |  D       |  18/01/23 | 18/01/23  |
 | NO   | F08 | Add logging user can see wins and rolls                       |  D       |  21/01/23 | 21/01/23  |
 | NO   | F09 | Add group scoring in the game                                 |  D       |  24/01/23 | 24/01/23  |
-| NO   | F10 | ...                                                           |  B       |  x        | x         |
-| NO   | F11 | ...                                                           |  B       |  x        | x         |
+| NO   | F10 | Reroll smarter dice feature (don't reroll gold and diamond)   |  D       |  24/01/23 | 24/01/23  |
+| NO   | F11 | Combo strategy where player should prioritize combos          |  P       |  x        | x         |
+| NO   | F12 | ...                                                           |  P       |  x        | x         |
+| NO   | F13 | ...                                                           |  P       |  x        | x         |
 
 
 
