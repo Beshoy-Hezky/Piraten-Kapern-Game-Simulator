@@ -9,7 +9,7 @@ public class PiratenKarpen {
     public static void main(String[] args) {
         System.out.println("Welcome to Piraten Karpen Simulator!");
         Player first_player = new Player();
-        first_player.turn_initial_strat();
+        first_player.turn_combo_strat();
         /*Player first_player = new Player();
         Player second_player = new Player();
 

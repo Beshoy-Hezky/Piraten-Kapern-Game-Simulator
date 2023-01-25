@@ -19,40 +19,16 @@ public class Strategy {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     protected boolean comboStrategyReroll(Player player){                // Combo strategy to reroll or not to reroll
         int percentage = 60;                                            // 60% chance of reroll if no combos exists
         int x = random.nextInt(100)+1;
 
-
-
         switch (player.getMax_value()) {
             case 3:
-                percentage = 45;          // if a combo of 3 exists 45% chance of reroll
+                percentage = 35;          // if a combo of 3 exists 35% chance of reroll
                 break;
             case 4:
-                percentage = 35;          // if a combo of 4 exists 35% chance of reroll
+                percentage = 25;          // if a combo of 4 exists 25% chance of reroll
                 break;
             case 5:
                 percentage = 10;          // if a combo of 5 exists 10% chance of reroll
@@ -77,9 +53,21 @@ public class Strategy {
     }
 
     protected int comboStrategyNumber(Player player){              //picking the number of dice to reroll for combo strategy
+        int upperBound = 0;
         int lowerBound = 2;
-        int upperBound = 8 - player.skulls_received() - player.tracking.get(Faces.GOLD) - player.tracking.get(Faces.DIAMOND) - player.getMax_value();
-        int randomNumber = random.nextInt(upperBound - lowerBound) + lowerBound + 1 ;   // random number between 2 and 8 - golds, diamonds, and most reoccuring face
+        if(!(player.getMax_face().equals(Faces.GOLD)) && !(player.getMax_face().equals(Faces.DIAMOND)) ) {
+            upperBound = 8 - player.skulls_received() - player.tracking.get(Faces.GOLD) - player.tracking.get(Faces.DIAMOND) - player.getMax_value();     // if most recurring face is not gold or diamond
+            System.out.println("the top one ran and the upper bound is: " + upperBound);
+        }
+        else{
+            upperBound = 8 - player.skulls_received() - player.tracking.get(Faces.GOLD) - player.tracking.get(Faces.DIAMOND);       // if most recurring face is gold or diamond (so that I do not subtract twice)
+            System.out.println("the top bottom ran and the upper bound is: " + upperBound);
+        }
+        int x = upperBound - lowerBound;
+        if(x<1){              // random number has to be between positive
+            x = 1;
+        }
+        int randomNumber = random.nextInt(x) + lowerBound + 1 ;   // random number between 2 and 8 - golds, diamonds, and most reoccuring face
         return randomNumber;
     }
 

@@ -12,7 +12,7 @@ public class Player {
    // public Faces[] array_of_faces = new Faces[8];
 
     //TEST HERE
-     public Faces[] array_of_faces = {Faces.SKULL, Faces.SKULL, Faces.SKULL, Faces.PARROT, Faces.DIAMOND,Faces.DIAMOND, Faces.DIAMOND,Faces.DIAMOND};
+     public Faces[] array_of_faces = {Faces.SKULL, Faces.SKULL, Faces.SABER, Faces.PARROT, Faces.DIAMOND,Faces.GOLD, Faces.DIAMOND,Faces.DIAMOND};
 
     private int score;
 
@@ -38,6 +38,7 @@ public class Player {
                 break;
             }
         }
+        System.out.println("Max face is: " + max_face + " Max freuqnecy is: " + max_value);
 
     }
 
@@ -93,7 +94,7 @@ public class Player {
         System.out.println(Arrays.toString(this.array_of_faces));
         while (!(score_manager.threeSkulls(this))) {
             System.out.println("Passed the while loop");
-            dice.tracker(this);
+           // dice.tracker(this);
             boolean x = false;                              // change this to liking
             System.out.println(x);
             if (x) {
@@ -106,7 +107,7 @@ public class Player {
             }
 
         }
-        dice.tracker(this);                                                     //dice.tracker gets the configuration of the dice so it tells the computer in a hashmap if I have 2 gold 3 monkey etc...
+        //dice.tracker(this);                                                     //dice.tracker gets the configuration of the dice so it tells the computer in a hashmap if I have 2 gold 3 monkey etc...
         System.out.println("The hash map came out as: " + tracking);
         if(!(score_manager.threeSkulls(this))){
             score_manager.handleGold(this);
@@ -132,6 +133,34 @@ public class Player {
             score_manager.handleGold(this);                          // Add points of (gold and diamond) to score
             score_manager.handleCombos(this);                        // Add points of combos
         }
+
+    }
+
+    public void turn_combo_strat() {
+        // dice.rollALL(this);
+        System.out.println(Arrays.toString(this.array_of_faces));
+        while (!(score_manager.threeSkulls(this))) {
+            System.out.println("Passed the while loop");
+            dice.tracker(this);
+            boolean x = strategy.comboStrategyReroll(this);                              // change this to liking
+            System.out.println("the bool came back as: " + x);
+            if (x) {
+                System.out.println("Passed the if loop");
+                dice.rerollSomeSmart(strategy.comboStrategyNumber(this),this);
+                System.out.println(Arrays.toString(this.array_of_faces));
+            }
+            else{
+                break;
+            }
+
+        }
+        dice.tracker(this);                                                     //dice.tracker gets the configuration of the dice so it tells the computer in a hashmap if I have 2 gold 3 monkey etc...
+        System.out.println("The hash map came out as: " + tracking);
+        if(!(score_manager.threeSkulls(this))){
+            score_manager.handleGold(this);
+            score_manager.handleCombos(this);
+        }
+        System.out.println(this.getScore());
 
     }
 }

@@ -11,15 +11,15 @@ public class Dice {
 
     }
 
-    protected void rollALL(Player player){
+    protected void rollALL(Player player){           // reroll all dice
         for(int i = 0; i < 8; i++){
             player.array_of_faces[i] =  player.array_of_dice[i].Dice();
         }
     }
 
-    protected void reRollSome(int again, Player player){                                // random player strategy to reroll
+    protected void reRollSome(int again, Player player){                                // rerolling the dice
         System.out.println(" the random number came back as "+ again);
-        if(again <= 8-player.skulls_received()) {                                       //to reroll number of rerolls has to consider skulls
+        if(again <= 8-player.skulls_received()) {                                       //number of rerolls has to consider skulls
             for (int i = 0; i < 8; i++) {
                 if ( (again > 0) && !(player.array_of_faces[i].equals(Faces.SKULL))) {  // if (again>0) and (not a skull)
                     player.array_of_faces[i] = player.array_of_dice[i].Dice();
@@ -28,17 +28,17 @@ public class Dice {
             }
         }
     }
-    protected void rerollSomeSmart(int again, Player player){
+    protected void rerollSomeSmart(int again, Player player){               // rerolling the dice while keeping the golds and diamonds
         System.out.println(" the random number came back as "+ again);
-        if(again <= 8- player.skulls_received() - player.tracking.get(Faces.GOLD) - player.tracking.get(Faces.DIAMOND) - player.getMax_value()){                   // checking number of dice that need to be rerolled so that function works
+       // if(again <= 8- player.skulls_received() - player.tracking.get(Faces.GOLD) - player.tracking.get(Faces.DIAMOND) - player.getMax_value()){                   // checking number of dice that need to be rerolled so that function works
             for (int i = 0; i < 8; i++){
                 if ( (again > 0) && !(player.array_of_faces[i].equals(Faces.SKULL)) && !(player.array_of_faces[i].equals(Faces.GOLD))
-                        && !(player.array_of_faces[i].equals(Faces.DIAMOND)) && !(player.array_of_faces[i].equals(player.getMax_face()))  ) {    // if (again>0) and (not a skull) and (not a gold) and (not a diamond)and (not the most recurring face)
+                        && !(player.array_of_faces[i].equals(Faces.DIAMOND)) && !(player.array_of_faces[i].equals(player.getMax_face()))) {    // if (again>0) and (not a skull) and (not a gold) and (not a diamond)and (not the most recurring face)
                     player.array_of_faces[i] = player.array_of_dice[i].Dice();
                     again -= 1;                                                     //decrement with each iteration
                 }
             }
-        }
+        //}
 
     }
 
