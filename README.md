@@ -45,6 +45,9 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 | NO   | F10 | Reroll smarter dice feature (don't reroll gold and diamond)   |  D       |  24/01/23 | 24/01/23  |
 | NO   | F11 | Combo strategy where player should prioritize combos          |  D       |  24/01/23 | 25/01/23  |
 | NO   | F12 | Combo strategy accessible from command line                   |  P       |  25/01/23 | 25/01/23  |
+| NO   | F13 | Make a functioning card and card deck                         |  P       |  x        | x         |
+| NO   | F13 | ...                                                           |  P       |  x        | x         |
+| NO   | F13 | ...                                                           |  P       |  x        | x         |
 | NO   | F13 | ...                                                           |  P       |  x        | x         |
 
 

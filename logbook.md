@@ -36,3 +36,6 @@
 25-01-2023
 1. Completed Combination strategy (WIN RATE IS VERY HIGH)
 2. Fixed some logging features.
+
+26-01-2023
+1. Work on Adding card and making a card deck
