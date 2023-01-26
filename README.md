@@ -9,10 +9,10 @@
     * `mvn clean`
   * To compile the project:
     * `mvn compile`
-  * To run the project in development mode:
-    * `mvn -q exec:java` (here, `-q` tells maven to be _quiet_) 
-  * To run the project in TRACE mode:
-    * `mvn -q exec:java -D TRACE`
+  * To run the project without TRACE mode (player1) vs (player2) :  (choose strategies for player 1 then 2 ex: "random combo") random for player 1 and combo for player 2
+    * `mvn exec:java -D exec.args="random combo"`
+  * To run the project in TRACE mode (player1) vs (player2) :  (choose strategies for player 1 then 2 ex: "random combo") random for player 1 and combo for player 2
+    * `mvn exec:java -D exec.args="random combo" -D TRACE`  
   * To package the project as a turn-key artefact:
     * `mvn package`
   * To run the packaged delivery:
