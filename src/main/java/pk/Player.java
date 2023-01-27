@@ -1,4 +1,5 @@
 package pk;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
@@ -7,6 +8,7 @@ public class Player extends Playturn implements Turn {
     // Though to myself: Have a constructor take in a string which defines a strategy have a big function with both strategies // have a big play game class inside the same package
 
    final protected String strategy;
+    private int score, wins;
     public Player(String strategy){
         this.strategy = strategy;
     }
@@ -14,9 +16,8 @@ public class Player extends Playturn implements Turn {
    // public Faces[] array_of_faces = new Faces[8];
 
     //TEST HERE
-    public Faces[] array_of_faces = {Faces.SABER, Faces.SABER, Faces.SABER, Faces.PARROT, Faces.DIAMOND,Faces.GOLD, Faces.DIAMOND,Faces.DIAMOND};
-    private int score;
-    private int wins;
+    public Faces[] array_of_faces = {Faces.SKULL, Faces.SKULL, Faces.SABER, Faces.PARROT, Faces.DIAMOND,Faces.PARROT, Faces.MONKEY,Faces.MONKEY};
+
     protected HashMap<Faces, Integer> tracking = new HashMap<>();
     private int max_value;         // this value stores the most recurring face in the dice
     private Faces max_face;       // this holds the most reoccurring face
@@ -33,7 +34,8 @@ public class Player extends Playturn implements Turn {
                 break;
             }
         }
-        System.out.println("Max face is: " + max_face + " Max freuqnecy is: " + max_value);
+        System.out.println(Arrays.toString(this.array_of_faces));
+        System.out.println("Max face is: " + this.max_face + " Max freuqnecy is: " + this.max_value);
     }
 
     protected int getMax_value(){
@@ -78,7 +80,7 @@ public class Player extends Playturn implements Turn {
     @Override
     public void playturn() {                        // to define which play a turn to use
         if(this.strategy.equals("random")){
-            super.shorter_turn_initial_strat(this);
+            super.turn_random_strat(this);
         }
         else if(this.strategy.equals("combo")){
             super.turn_combo_strat(this);

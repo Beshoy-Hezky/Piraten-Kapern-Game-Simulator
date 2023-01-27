@@ -38,4 +38,8 @@
 2. Fixed some logging features.
 
 26-01-2023
-1. Work on Adding card and making a card deck
+1. Work on Adding card and making a card deck.
+
+27-01-2023
+1. Successfully added Battle ship card and battle ship strategies.
+2. Took alot of work because I did not know user was going to need big changes

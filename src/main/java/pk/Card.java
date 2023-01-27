@@ -1,2 +1,17 @@
-package pk;public class Card {
+package pk;
+
+public class Card {
+    final String face;
+    final int sabers;
+
+    final int cost;
+    public Card(String face, int amount_of_sabers, int value){
+        this.face = face;
+        this.sabers = amount_of_sabers;
+        this.cost = value;
+    }
+
+    protected String getFace(){
+        return this.face;
+    }
 }

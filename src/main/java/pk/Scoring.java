@@ -12,7 +12,7 @@ public class Scoring {
     }
 
     protected boolean threeSkulls(Player player){
-            if(player.skulls_received() >= 3){
+            if(player.skulls_received() >= 3){                  // if 3 or more skulls optained
                 return true;
             }
             return false;

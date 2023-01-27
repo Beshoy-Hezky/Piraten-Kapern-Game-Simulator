@@ -17,7 +17,7 @@ public class Dice {
         }
     }
 
-    protected void reRollSome(int again, Player player){                                // rerolling the dice
+    protected void reRollSome(int again, Player player){                                // rerolling the dice for random strategy
         System.out.println(" the random number came back as "+ again);
         if(again <= 8-player.skulls_received()) {                                       //number of rerolls has to consider skulls
             for (int i = 0; i < 8; i++) {
@@ -28,7 +28,7 @@ public class Dice {
             }
         }
     }
-    protected void rerollSomeSmart(int again, Player player){               // rerolling the dice while keeping the golds and diamonds
+    protected void rerollSomeSmart(int again, Player player){               // rerolling the dice while keeping the golds and diamonds (for combo strategy)
         System.out.println(" the random number came back as "+ again);
             for (int i = 0; i < 8; i++){
                 if ( (again > 0) && !(player.array_of_faces[i].equals(Faces.SKULL)) && !(player.array_of_faces[i].equals(Faces.GOLD))
@@ -38,6 +38,15 @@ public class Dice {
                 }
             }
     }
+
+    protected void reRollForMoreSabers(Player player){                                // rerolling the dice for random strategy
+            for (int i = 0; i < 8; i++) {
+                //reroll everything that is not a skull or a saber
+                if ( (!(player.array_of_faces[i].equals(Faces.SKULL)))&& (!(player.array_of_faces[i].equals(Faces.SABER)))) {
+                    player.array_of_faces[i] = player.array_of_dice[i].Dice();
+                }
+            }
+        }
 
     protected void tracker(Player player){                                     // function to track faces
         player.tracking.clear();

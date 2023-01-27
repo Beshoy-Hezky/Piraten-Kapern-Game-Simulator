@@ -2,8 +2,11 @@ package pk;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.appender.ConsoleAppender;
 
 import java.util.Arrays;
+
+
 
 
 public class Game {
