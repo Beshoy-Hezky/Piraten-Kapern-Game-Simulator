@@ -1,4 +1,4 @@
-package pk;
+package Cardstuff;
 
 public class Card {
     final String face;

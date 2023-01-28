@@ -1,4 +1,6 @@
-package pk;
+package Cardstuff;
+import Cardstuff.Card;
+
 import java.util.Collections;
 import java.util.Stack;
 
@@ -8,7 +10,7 @@ public class CardDeck {
     private int sabers_top;
     private int value_top;
 
-    public void fillDeck(){                             // fill the deck
+    protected void fillDeck(){                             // fill the deck
         if (deck.empty()){                              // fill the deck only when empty
             for(int i = 0; i < 2; i++){                 // 6 sea battles        2 of each kind
                 deck.push(new Card("Sea Battle", 2,-300));

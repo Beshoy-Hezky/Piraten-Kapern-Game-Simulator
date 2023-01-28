@@ -16,11 +16,13 @@ public class PiratenKarpen {
         }
         if(System.getProperties().containsKey("TRACE")){                                     // check if you want to run it in trace mode
             for(int i = 0; i < 42; i++) {
-                Game.debugMode(first_player, second_player);
+                Game.totrace = true;
+                Game.playGame(first_player, second_player);
             }
         }
         else {
             for (int i = 0; i < 42; i++) {
+                Game.totrace = false;
                 Game.playGame(first_player, second_player);
             }
         }
