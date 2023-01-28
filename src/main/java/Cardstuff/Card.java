@@ -5,7 +5,7 @@ public class Card {
     final int sabers;
 
     final int cost;
-    public Card(String face, int amount_of_sabers, int value){
+    protected Card(String face, int amount_of_sabers, int value){
         this.face = face;
         this.sabers = amount_of_sabers;
         this.cost = value;

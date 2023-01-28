@@ -5,20 +5,16 @@ import java.util.Map.Entry;
 
 public class Player extends Playturn implements Turn {
 
-    // Though to myself: Have a constructor take in a string which defines a strategy have a big function with both strategies // have a big play game class inside the same package
-
    final protected String strategy;
     private int score, wins;
     public Player(String strategy){
         this.strategy = strategy;
     }
     protected Dice[] array_of_dice = {new Dice(),new Dice(),new Dice(),new Dice(),new Dice(),new Dice(),new Dice(),new Dice()};
-   // public Faces[] array_of_faces = new Faces[8];
+    public Faces[] array_of_faces = new Faces[8];
 
-    //TEST HERE
-    public Faces[] array_of_faces = {Faces.SKULL, Faces.SKULL, Faces.SABER, Faces.PARROT, Faces.DIAMOND,Faces.PARROT, Faces.MONKEY,Faces.MONKEY};
 
-    protected HashMap<Faces, Integer> tracking = new HashMap<>();
+    protected HashMap<Faces, Integer> tracking = new HashMap<>();     // this hashmap is used to track the faces in each roll
     private int max_value;         // this value stores the most recurring face in the dice
     private Faces max_face;       // this holds the most reoccurring face
     protected void finding_max_value(){                 // this function finds the most reoc
@@ -34,8 +30,6 @@ public class Player extends Playturn implements Turn {
                 break;
             }
         }
-        System.out.println(Arrays.toString(this.array_of_faces));
-        System.out.println("Max face is: " + this.max_face + " Max freuqnecy is: " + this.max_value);
     }
 
     protected int getMax_value(){
@@ -46,17 +40,15 @@ public class Player extends Playturn implements Turn {
         return max_face;
     }
 
-
     public int getWins(){
         return this.wins;
     }
 
-    public void incrementWins(){
+    protected void incrementWins(){
         this.wins += 1;
     }
 
-
-    public void resetScore() {
+    protected void resetScore() {
         this.score = 0;
     }
 
@@ -85,6 +77,5 @@ public class Player extends Playturn implements Turn {
         else if(this.strategy.equals("combo")){
             super.turn_combo_strat(this);
         }
-
     }
 }

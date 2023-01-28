@@ -43,3 +43,6 @@
 27-01-2023
 1. Successfully added Battle ship card and battle ship strategies.
 2. Took alot of work because I did not know user was going to need big changes
+
+28-01-2023
+1. Add monkey business card and clean the code and access specifiers

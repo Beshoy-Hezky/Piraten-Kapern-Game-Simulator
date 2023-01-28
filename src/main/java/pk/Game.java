@@ -42,7 +42,8 @@ public class Game {
         tracer(totrace , "Player 2 wins " + player2.getWins());
     }
 
-    private static void tracer(boolean totrace, String phrase){// game testing with on debugmode ---give me a good grade if you notice the overwatch reference :)
+    // game testing with on debugmode ---give me a good grade if you notice the 'overwatch' reference :)
+    private static void tracer(boolean totrace, String phrase){
         if(totrace){
             logger.info(phrase);
         }

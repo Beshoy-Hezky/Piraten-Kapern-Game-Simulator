@@ -45,4 +45,34 @@ public class Scoring {
         player.addScore(sum);
     }
 
+    protected void handleMonkeyBusiness(Player player){         //COMBO scoring system
+        int sum = 0;
+        int counter = 0;
+        for(int i=0; i < 8; i++){
+            if(player.array_of_faces[i].equals(Faces.PARROT) || player.array_of_faces[i].equals(Faces.MONKEY)){
+                counter++;
+            }
+        }
+            switch (counter) {
+                case 3:
+                    sum+= 100;
+                    break;
+                case 4:
+                    sum+= 200;
+                    break;
+                case 5:
+                    sum+= 500;
+                    break;
+                case 6:
+                    sum+= 1000;
+                    break;
+                case 7:
+                    sum+= 2000;
+                    break;
+                case 8:
+                    sum+= 4000;
+                    break;
+            }
+        player.addScore(sum);
+    }
 }

@@ -43,7 +43,6 @@ public class Strategy {
                 percentage = 0;           // if a combo of 8 exists 0% chance of reroll
                 break;
         }
-        System.out.println("Chance to reroll came out as: " + percentage + "and x is :" + x);
         if(x <= percentage){              // checks random integer between 1-100
             return true;
         }
@@ -55,13 +54,11 @@ public class Strategy {
     protected int comboStrategyNumber(Player player){              //picking the number of dice to reroll for combo strategy
         int upperBound = 0;
         int lowerBound = 2;
-        if(!(player.getMax_face().equals(Faces.GOLD)) && !(player.getMax_face().equals(Faces.DIAMOND)) ) {
-            upperBound = 8 - player.skulls_received() - player.tracking.get(Faces.GOLD) - player.tracking.get(Faces.DIAMOND) - player.getMax_value();     // if most recurring face is not gold or diamond
-            System.out.println("the top one ran and the upper bound is: " + upperBound);
+        if(!(player.getMax_face().equals(Faces.GOLD)) && !(player.getMax_face().equals(Faces.DIAMOND)) ) {          // if most recurring face is not gold or diamond
+            upperBound = 8 - player.skulls_received() - player.tracking.get(Faces.GOLD) - player.tracking.get(Faces.DIAMOND) - player.getMax_value();
         }
         else{
             upperBound = 8 - player.skulls_received() - player.tracking.get(Faces.GOLD) - player.tracking.get(Faces.DIAMOND);       // if most recurring face is gold or diamond (so that I do not subtract twice)
-            System.out.println("the bottom ran and the upper bound is: " + upperBound);
         }
         int x = upperBound - lowerBound;
         if(x<1){              // random number has to be between positive

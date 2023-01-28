@@ -18,7 +18,6 @@ public class Dice {
     }
 
     protected void reRollSome(int again, Player player){                                // rerolling the dice for random strategy
-        System.out.println(" the random number came back as "+ again);
         if(again <= 8-player.skulls_received()) {                                       //number of rerolls has to consider skulls
             for (int i = 0; i < 8; i++) {
                 if ( (again > 0) && !(player.array_of_faces[i].equals(Faces.SKULL))) {  // if (again>0) and (not a skull)
@@ -29,7 +28,6 @@ public class Dice {
         }
     }
     protected void rerollSomeSmart(int again, Player player){               // rerolling the dice while keeping the golds and diamonds (for combo strategy)
-        System.out.println(" the random number came back as "+ again);
             for (int i = 0; i < 8; i++){
                 if ( (again > 0) && !(player.array_of_faces[i].equals(Faces.SKULL)) && !(player.array_of_faces[i].equals(Faces.GOLD))
                         && !(player.array_of_faces[i].equals(Faces.DIAMOND)) && !(player.array_of_faces[i].equals(player.getMax_face()))) {    // if (again>0) and (not a skull) and (not a gold) and (not a diamond)and (not the most recurring face)

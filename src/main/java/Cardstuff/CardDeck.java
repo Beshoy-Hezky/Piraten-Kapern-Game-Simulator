@@ -14,14 +14,13 @@ public class CardDeck {
         if (deck.empty()){                              // fill the deck only when empty
             for(int i = 0; i < 2; i++){                 // 6 sea battles        2 of each kind
                 deck.push(new Card("Sea Battle", 2,-300));
-            }
-            for(int i = 0; i < 2; i++){
                 deck.push(new Card("Sea Battle",3,-500));
-            }
-            for(int i = 0; i < 2; i++){
                 deck.push(new Card("Sea Battle",4,-1000));
             }
-            for(int x = 0; x < 29; x++){
+            for(int r = 0; r < 4; r++){
+                deck.push(new Card("Monkey Business", 0 , 0));
+            }
+            for(int x = 0; x < 25; x++){
                 deck.push(new Card("nop",0,0));
             }
             Collections.shuffle(deck);                  // shuffle the deck
@@ -34,7 +33,6 @@ public class CardDeck {
         String element = card.getFace();
         sabers_top = card.sabers;
         value_top = card.cost;
-        System.out.println("the card is: "+ element + " the sabers and cost are " + sabers_top + " " + value_top);
         deck.pop();                                     // remove the top card after seeing the element.
         return element;
     }

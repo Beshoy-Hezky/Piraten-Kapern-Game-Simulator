@@ -12,6 +12,7 @@ public class Playturn {
     public void turn_random_strat(Player player) {          // this is the method for running one turn
         dice_manager.rollALL(player);                       // turn starts by rolling all 8 dice
         dice_manager.tracker(player);
+        String topcard = cardDeck.drawCard();
         if (cardDeck.drawCard().equals("Sea Battle")){
             //keep on looping until the player gets 3 skulls or more sabers than required
             while((!(score_manager.threeSkulls(player)))&& (player.tracking.get(Faces.SABER))< cardDeck.getSabers_top()){
@@ -38,6 +39,9 @@ public class Playturn {
         }
         dice_manager.tracker(player);
         if(!(score_manager.threeSkulls(player))){                      // if less than three skulls
+            if(topcard.equals("Monkey Business")){              // if monkey business card is present
+                score_manager.handleMonkeyBusiness(player);
+            }
             score_manager.handleGold(player);                          // Add points of (gold and diamond) to score
             score_manager.handleCombos(player);                        // Add points of combos
         }
@@ -46,7 +50,8 @@ public class Playturn {
     public void turn_combo_strat(Player player) {
         dice_manager.rollALL(player);
         dice_manager.tracker(player);
-        if (cardDeck.drawCard().equals("Sea Battle")){
+        String topcard = cardDeck.drawCard();
+        if (topcard.equals("Sea Battle")){
             //keep on looping until the player gets 3 skulls or more sabers than required
             while((!(score_manager.threeSkulls(player)))&& (player.tracking.get(Faces.SABER))< cardDeck.getSabers_top()){
                 dice_manager.reRollForMoreSabers(player);   // smarter reroll for combo player and random reroll for random player
@@ -58,27 +63,25 @@ public class Playturn {
             }
             else{
                 player.addScore(cardDeck.getValue_top());    // subtract the cost
-                System.out.println("second one ran");
-                System.out.println(player.getScore());
                 return;
             }
         }
         while (!(score_manager.threeSkulls(player))) {
-            System.out.println("Passed the while loop");
             dice_manager.tracker(player);
-            if (strategy_Manager.comboStrategyReroll(player)) {
-                dice_manager.rerollSomeSmart(strategy_Manager.comboStrategyNumber(player),player);
+            if (strategy_Manager.comboStrategyReroll(player)) {         // to reroll or not using combo strategy odds
+                dice_manager.rerollSomeSmart(strategy_Manager.comboStrategyNumber(player),player);    // using combo strategy to choose amount of dice to reroll
             }
-            else{
+            else{                   // if player doesn't reroll then break and start calculatig score
                 break;
             }
-
         }
         dice_manager.tracker(player);
         if(!(score_manager.threeSkulls(player))){
+            if(topcard.equals("Monkey Business")){              // if monkey business card is present
+                score_manager.handleMonkeyBusiness(player);
+            }
             score_manager.handleGold(player);
             score_manager.handleCombos(player);
         }
-
     }
 }
