@@ -3,6 +3,9 @@
   * Author: < Beshoy Hezky >
   * Email: < hezkyb@mcmaster.ca >
 
+## How to use
+[Video tutorial](https://youtu.be/xtYLQGbtXeY?si=PtJbpMnU3_8BBdlX)
+
 ## Build and Execution    
 * *** WARNINGGGG: PLEASE DO NOT COPY PASTE THE COMMANDS INSTEAD TYPE THEM OUT, I NOTICED THE COMMANDS DO NOT RUN CORRECTLY WHEN I COPY PASTE THEM.***
 
